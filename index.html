@@ -1,0 +1,61 @@
+// BMIを計算して表示するプログラム
+// (追加) BMIを算出したうえで痩せか肥満か判定する
+// (追加) 入力した身長における標準体重を表示する
+// 身長（cm）と体重（Kg）を入力して、BMIを計算して画面に表示する
+import java.io.*;
+class Bmi1
+{
+	public static void main( String[] args ) throws IOException
+	{
+		System.out.println("身長(cm)と体重(kg)を入力してください。");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		String str1 = br.readLine();
+		String str2 = br.readLine();
+
+		Double height = Double.parseDouble(str1);
+		Double weight = Double.parseDouble(str2);
+		
+		Double bmi = weight/(height*height)*10000;
+
+		System.out.println("あなたのBMIは" + (String.format("%.1f", weight/(height*height)*10000)) + "です。");
+		
+		if( bmi < 16 )
+		{
+			System.out.println("BMIの結果、あなたは「痩せすぎ」と判定されました。");
+		}
+		else if( 16 <= bmi && bmi < 17 )
+		{
+			System.out.println("BMIの結果、あなたは「痩せ」と判定されました。");
+		}
+		else if( 17 <= bmi && bmi < 18.5 )
+		{
+			System.out.println("BMIの結果、あなたは「痩せ気味」と判定されました。");
+		}
+		else if( 18.5 <= bmi && bmi < 24.5 )
+		{
+			System.out.println("BMIの結果、あなたは「標準体重」と判定されました。");
+		}
+		else if( 24.5 <= bmi && bmi < 30 )
+		{
+			System.out.println("BMIの結果、あなたは「肥満１度」と判定されました。");
+		}
+		else if( 30 <= bmi && bmi < 35 )
+		{
+			System.out.println("BMIの結果、あなたは「肥満２度」と判定されました。");
+		}
+		else if( 35 <= bmi && bmi < 40 )
+		{
+			System.out.println("BMIの結果、あなたは「肥満３度」と判定されました。");
+		}
+		else if( bmi >= 40 )
+		{
+			System.out.println("BMIの結果、あなたは「肥満４度」と判定されました。");
+		}
+		
+		System.out.println("あなたが入力した身長(" + (String.format("%.1f" , height )) + "cm)の方の標準体重は"+ (String.format("%.1f" , (height-100)*0.9)) + "kgです。");
+	}
+}
+
+// end of Bmi1.java
